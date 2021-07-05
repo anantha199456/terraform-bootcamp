@@ -3,7 +3,7 @@ variable "region_name" {
 }
 
 variable "cidr_block" {
-    default = "86.10"
+    default = "96.10"
 }
 
 variable "instance_tenancy" {
