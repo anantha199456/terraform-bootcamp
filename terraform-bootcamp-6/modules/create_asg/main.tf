@@ -14,8 +14,8 @@ resource "aws_autoscaling_group" "aws_autoscaling_group" {
     version = var.template_version
   }
   target_group_arns = [ var.target_group_arns ]
-    health_check_type = "ELB"
-    tags = [ {
+  health_check_type = "ELB"
+  tags = [ {
         "Name" = var.name
-    } ]
+  } ]
 }

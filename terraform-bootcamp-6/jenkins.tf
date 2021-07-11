@@ -69,7 +69,7 @@ resource "aws_security_group" "anantha_server_secutity_group" {
   } 
   ingress {
     cidr_blocks = [ var.all_open_cidr_block ]
-    description = "application-port"
+    description = "jenkins-port"
     from_port =  "8080"
     ipv6_cidr_blocks = []
     prefix_list_ids = []
@@ -101,16 +101,17 @@ module "create_launch_template" {
     instance_type = "t2.micro"
     vpc_security_group_ids = aws_security_group.anantha_server_secutity_group.id
     user_data = base64encode(data.template_file.user_data.rendered)
+    name = var.name
 }
 
 module "create_auto_scaling_group" {
     source = "./modules/create_asg"
-    min_size = 2
-    max_size = 2
+    min_size = 1
+    max_size = 1
     launch_template_id = module.create_launch_template.launch_template_id
     target_group_arns = module.create_listner_and_target_group.target_group_arn
     vpc_zone_identifier = module.create_vpc.public_subnet_ids
-    
+    name = var.name
 }
 
 resource "null_resource" "get_jenkins_initial_admin_password" {
@@ -122,7 +123,7 @@ resource "null_resource" "get_jenkins_initial_admin_password" {
       type = "ssh"
       user = "ubuntu"
       private_key = file("d:/anantha-demo.pem")
-      host = data.aws_instance.jenkins_server.public_ip
+      host = "3.15.227.222"
     }
     inline = [
       "sudo cat ${var.JENKINS_HOME}/secrets/initialAdminPassword"

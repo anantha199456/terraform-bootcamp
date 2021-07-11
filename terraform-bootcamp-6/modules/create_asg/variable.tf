@@ -1,6 +1,6 @@
 
   variable "name"{
-      default = "anantha-demo"
+    #   default = "anantha-demo"
   }
   
   variable "vpc_zone_identifier" {

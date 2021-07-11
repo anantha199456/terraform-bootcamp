@@ -1,7 +1,12 @@
 
 variable "name" {
-  default = "anantha-jenkins"
+  default = "anantha-demo"
 }
+
+# variable "name_ec2" {
+#   default = "anantha-demo"
+# }
+
 
 variable "region_name" {
   default = "us-east-2"
