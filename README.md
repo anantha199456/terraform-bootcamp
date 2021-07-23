@@ -19,3 +19,7 @@
 4. Change Automation: Complex changesets can be applied to your infrastructure with minimal human interaction. With the previously mentioned execution plan and resource graph, you know exactly what Terraform will change and in what order, avoiding many possible human errors.
 
 For more information, see the introduction section of the Terraform website.
+
+
+----------
+**90% of the services that AWS provides have been used during these terraform sessions and provided code for the same. I have included the EKS cluster creation and provider too.**
