@@ -8,6 +8,9 @@ resource "aws_iam_role_policy_attachment" "aws-cluster-policy-attachment01" {
 }
 
 resource "aws_iam_role_policy_attachment" "aws-node-policy-attachment04" {
+  depends_on = [
+    var.create_ec2_role
+  ]
   for_each = toset([
     "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy", 
     "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy",

@@ -16,6 +16,7 @@ module "create_ec2_role" {
 
 module "create_policy_and_attach" {
   source = "./modules/create_policy_and_attach"
+  create_ec2_role = module.create_ec2_role
   node_role_name = module.create_ec2_role["node_role"].role_name
   cluster_role_name = var.cluster_role["role_name"]
   cluster_access_policy_role = module.create_ec2_role["access_role"].role_name
